@@ -1,0 +1,9 @@
+.idea
+.ipynb_checkpoints
+training.ipynb
+venv
+vkcup
+*.csv
+catboost_info
+ EDA.ipynb
+__pycache__
