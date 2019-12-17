@@ -16,6 +16,11 @@ class QuestionBasedAnalytics:
         else:
             return 1
 
+
+    def has_I_sign(self, q):  # no one
+        return int("I" in q)
+
+
     def has_next_line_sign(self, q):  # no one
         return int("\\n" in q)
 
@@ -46,7 +51,7 @@ class QuestionBasedAnalytics:
 
 
     def count_ellipsis(self, q):
-        return len(re.findall("\.\.", q))
+        return len(re.findall("\.\.\.", q))
 
     def is_math(self, q):
         pattern = re.compile("([0-9][*\\-+/][0-9])")
@@ -61,7 +66,11 @@ class QuestionBasedAnalytics:
     def count_years(self, q):
         return len(re.findall("[0-9]{4}", q))
 
+    def count_digitletter(self, q):
+        return len(re.findall("[0-9][а-яa-z]", q.lower())) + len(re.findall("[а-яa-z][0-9]", q.lower()))
 
+    def count_yo(self, q):
+        return len(re.findall("ё", q.lower()))
 
 
     def has_name(self, q):
@@ -70,4 +79,18 @@ class QuestionBasedAnalytics:
             return 1
         else:
             return 0
+
+    def count_weird_signs(self, q):
+        return len(re.findall("[\"”“„'.,+\\-*/ –()!\\\\:<>=|^’%—;…№#°@{}\\[\\]_$]", q)) #^0-9a-zа-яA-ZА-ЯёЁ?«»
+
+    def count_consonants_ssigns(self, q):
+        return len(re.findall("[бвгджзклмнпрстфхцчшщ]", q))
+
+    def count_vowels_signs(self, q):
+        return len(re.findall("[ауоыиэяюёе]", q))
+
+    def count_signs(self, q):
+        return len(q)
+
+
 

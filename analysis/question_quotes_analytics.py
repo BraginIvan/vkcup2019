@@ -88,3 +88,31 @@ class QuestionQuotesAnalytics:
             return 1
         else:
             return 0
+
+    def count_quote_type1_left_space(self, q):  # no one
+        pattern1 = re.compile("(« )")
+        if pattern1.search(q):
+            return 1
+        else:
+            return 0
+
+    def count_quote_type1_left_no_space(self, q):  # no one
+         pattern1 = re.compile("([^ ]«)")
+         if pattern1.search(q):
+             return 1
+         else:
+             return 0
+
+    def count_quote_type1_right_space(self, q):  # no one
+        pattern1 = re.compile("( »)")
+        if pattern1.search(q):
+            return 1
+        else:
+            return 0
+
+    def count_quote_type1_right_no_space(self, q):  # no one
+        pattern1 = re.compile("(»[^ ])")
+        if pattern1.search(q):
+            return 1
+        else:
+            return 0

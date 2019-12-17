@@ -35,26 +35,18 @@ class QuestionBreakersAnalytics:
             return -1
         return int(self._is_balanced(q, "{", "}"))
 
-    def has_start_brackets_type3(self, q):  # no one
-        return int("<" in q)
+    def has_brackets_type3(self, q):  # no one
+        return int("<" in q) + int(">" in q)
 
-    def has_end_brackets_type3(self, q):  # no one
-        return int(">" in q)
 
     def is_balanced_brackets_type3(self, q):  # no one
-        if not self.has_start_brackets_type3(q) and not self.has_end_brackets_type3(q):
+        if self.has_brackets_type3(q) == 0:
             return -1
         return int(self._is_balanced(q, "<", ">"))
 
-    def has_start_brackets_type4(self, q):  # no one
-        return int("]" in q)
+    def has_brackets_type4(self, q):  # no one
+        return int("]" in q) + int("[" in q)
 
-    def has_end_brackets_type4(self, q):  # no one
-        return int("[" in q)
 
-    def is_balanced_brackets_type4(self, q):  # no one
-        if not self.has_start_brackets_type4(q) and not self.has_end_brackets_type4(q):
-            return -1
-        return int(self._is_balanced(q, "[", "]"))
 
 

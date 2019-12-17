@@ -10,8 +10,7 @@ from analysis.utils import *
 
 
 class MainAnalyzer:
-    def __init__(self, data):
-        self.word_counter_analytics = WordCounterAnalytics(data)
+    def __init__(self):
         self.question_words_analytics = QuestionWordsAnalytics()
         self.question_based_analytics = QuestionBasedAnalytics()
         self.question_breakers_analytics = QuestionBreakersAnalytics()
@@ -34,8 +33,12 @@ class MainAnalyzer:
         count = df.groupby(['Question'])['Question'].transform(lambda group: group.count())
         df['count']=count
 
-        for q_base in [self.word_counter_analytics, self.question_words_analytics, self.question_based_analytics,
+        for q_base in [self.question_words_analytics, self.question_based_analytics,
                        self.question_breakers_analytics, self.question_quotes_analytics, self.question_sign_analytics]:
             map_methods_from_class(df, q_base, 'Question')
         apply_methods_from_class(df, self.postprocess_question_analytics)
         apply_methods_from_class(df, self.postprocess_final_analytics)
+
+        word_counter_analytics=WordCounterAnalytics(df)
+        map_methods_from_class(df, word_counter_analytics, 'Question')
+

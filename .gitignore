@@ -5,5 +5,5 @@ venv
 vkcup
 *.csv
 catboost_info
- EDA.ipynb
+EDA.ipynb
 __pycache__
